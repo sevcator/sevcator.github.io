@@ -90,6 +90,25 @@
         .button:focus, .button2:hover, .copy-button:focus {
             outline: none;
         }
+        .bio-expanded {
+			display: none;
+            z-index: 2; /* Ensure it’s above the overlay */
+		}
+		.bio-expanded.show {
+			display: block;
+            z-index: 2; /* Ensure it’s above the overlay */
+		}
+		.expand-bio {
+			text-decoration: none;
+			color: #fff;
+			cursor: pointer;
+		}
+		.expand-bio:hover {
+			text-decoration: underline;
+		}
+		.bio-expanded {
+			white-space: pre-wrap;
+		}
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             .avatar {
@@ -149,7 +168,12 @@
 <body>
     <img src="materials\avatar.png" alt="Avatar" class="avatar">
     <div class="name">sevcator</div>
-    <div class="bio">Gray emotional boy.</div>
+    <div class="bio-container">
+	  <div class="bio">
+	  Gray emotional boy.
+	  <a href="#" class="expand-bio">More...</a>
+	  <span class="bio-expanded">If you want more communication from me, go to my Telegram.</span>
+	</div>
     <div class="button-container">
         <a class="copy-button" onclick="copyToClipboard('@sevcator')">
             <img src="materials\discord.png" alt="Discord">Copy Discord
@@ -175,6 +199,15 @@
     </div>
 
     <script>
+        const expandBioButton = document.querySelector('.expand-bio');
+		const bioExpanded = document.querySelector('.bio-expanded');
+
+		expandBioButton.addEventListener('click', (e) => {
+			e.preventDefault();
+			bioExpanded.classList.toggle('show');
+			expandBioButton.textContent = bioExpanded.classList.contains('show')? 'Minimize' : 'More...';
+		});
+        
         function copyToClipboard(text) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
