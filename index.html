@@ -200,13 +200,13 @@
 
     <script>
         const expandBioButton = document.querySelector('.expand-bio');
-		const bioExpanded = document.querySelector('.bio-expanded');
+	const bioExpanded = document.querySelector('.bio-expanded');
 
-		expandBioButton.addEventListener('click', (e) => {
-			e.preventDefault();
-			bioExpanded.classList.toggle('show');
-			expandBioButton.textContent = bioExpanded.classList.contains('show')? 'Minimize' : 'More...';
-		});
+	expandBioButton.addEventListener('click', (e) => {
+		e.preventDefault();
+		bioExpanded.classList.toggle('show');
+		expandBioButton.textContent = bioExpanded.classList.contains('show')? 'Minimize' : 'More...';
+	});
         
         function copyToClipboard(text) {
             const tempInput = document.createElement('input');
