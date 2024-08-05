@@ -102,12 +102,15 @@
 	    text-decoration: none;
 	    color: #fff;
 	    cursor: pointer;
+	    z-index: 2; /* Ensure it’s above the overlay */
 	}
 	.expand-bio:hover {
 	    text-decoration: underline;
+	    z-index: 2; /* Ensure it’s above the overlay */
 	}
 	.bio-expanded {
 	    white-space: pre-wrap;
+            z-index: 2; /* Ensure it’s above the overlay */
 	}
         /* Media query for mobile devices */
         @media (max-width: 768px) {
