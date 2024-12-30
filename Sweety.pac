@@ -47,6 +47,6 @@ var FindProxyForURL = function(init, profiles) {
     },
     "+proxy": function(url, host, scheme) {
         "use strict";
-        return "SOCKS5 127.0.0.1:9050; SOCKS 127.0.0.1:9050";
+        return "SOCKS5 127.0.0.1:9050";
     }
 });
