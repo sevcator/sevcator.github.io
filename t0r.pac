@@ -18,7 +18,10 @@ var FindProxyForURL = function(init, profiles) {
         if (/(?:^|\.)sndcdn\.com$/.test(host)) return "+proxy";
         if (/(?:^|\.)soundcloud\.cloud$/.test(host)) return "+proxy";
         if (/^spotify\.com$/.test(host)) return "+proxy";
-        if (/(?:^|\.)spotify\.com$/.test(host)) return "+proxy";
+        if (/^www\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^accounts\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^api\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^open\.spotify\.com$/.test(host)) return "+proxy";
         if (/^openai\.com$/.test(host)) return "+proxy";
         if (/^chatgpt\.com$/.test(host)) return "+proxy";
         if (/^oaistatic\.com$/.test(host)) return "+proxy";
