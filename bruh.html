@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open local_tor.pac</title>
     <script>
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const content = e.target.result;
-                    document.getElementById('fileContent').textContent = content;
-                };
-                reader.readAsText(file);
-            }
+        function loadPacFile() {
+            fetch('local_tor.pac')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('fileContent').textContent = data;
+                })
+                .catch(error => {
+                    console.error('Error loading the file:', error);
+                });
         }
     </script>
 </head>
 <body>
     <h1>Open local_tor.pac File</h1>
-    <input type="file" id="fileInput" onchange="handleFileSelect(event)">
+    <button onclick="loadPacFile()">Load local_tor.pac</button>
     <pre id="fileContent"></pre>
 </body>
 </html>
