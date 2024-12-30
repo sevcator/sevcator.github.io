@@ -35,7 +35,10 @@ var FindProxyForURL = function(init, profiles) {
             /^open\.spotify\.com$/,
             /(?:^|\.)spotifycdn\.com$/,
             /(?:^|\.)scdn\.co$/,
-            /(?:^|\.)gstatic\.com$/
+            /(?:^|\.)gstatic\.com$/,
+
+            // 4pda
+            /(?:^|\.)4pda\.to$/
         ];
 
         // Match host with proxy hosts
