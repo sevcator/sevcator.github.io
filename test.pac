@@ -22,6 +22,7 @@ var FindProxyForURL = function(init, profiles) {
         if (/^accounts\.spotify\.com$/.test(host)) return "+proxy";
         if (/^api\.spotify\.com$/.test(host)) return "+proxy";
         if (/^open\.spotify\.com$/.test(host)) return "+proxy";
+        if (/scdn\.co$/.test(host)) return "+proxy";
         if (/^openai\.com$/.test(host)) return "+proxy";
         if (/^chatgpt\.com$/.test(host)) return "+proxy";
         if (/^oaistatic\.com$/.test(host)) return "+proxy";
