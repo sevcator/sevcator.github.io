@@ -28,7 +28,6 @@ var FindProxyForURL = function(init, profiles) {
         if (/^spotify\.com$/.test(host)) return "+proxy";
         if (/spotifycdn\.com$/.test(host)) return "+proxy";
         if (/scdn\.co$/.test(host)) return "+proxy";
-        if (/(?:^|\.)gstatic\.com$/.test(host)) return "+proxy";
         return "DIRECT";
     },
     "+proxy": function(url, host, scheme) {
