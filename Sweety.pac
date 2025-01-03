@@ -1,3 +1,4 @@
+# sevcator.github.io
 function FindProxyForURL(url, host) {
     const ipMapping = {
         "dns.google": ["8.8.8.8", "8.8.4.4"],
