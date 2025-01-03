@@ -1,5 +1,5 @@
-var FindProxyForURL = function(init, profiles) {
-    return function(url, host) {
+var FindProxyForURL = function (init, profiles) {
+    return function (url, host) {
         "use strict";
         var result = init, scheme = url.substr(0, url.indexOf(":"));
         do {
@@ -9,46 +9,27 @@ var FindProxyForURL = function(init, profiles) {
         return result;
     };
 }("+auto switch", {
-    "+auto switch": function(url, host, scheme) {
+    "+auto switch": function (url, host, scheme) {
         "use strict";
-        // Define proxy hosts
-        const proxyHosts = [
-            // SoundCloud
-            /(?:^|\.)soundcloud\.com$/,
-            /(?:^|\.)sndcdn\.com$/,
-            /(?:^|\.)soundcloud\.cloud$/,
-
-            // ChatGPT/OpenAI
-            /(?:^|\.)openai\.com$/,
-            /(?:^|\.)chatgpt\.com$/,
-            /(?:^|\.)oaistatic\.com$/,
-            /(?:^|\.)oaiusercontent\.com$/,
-            /(?:^|\.)auth0\.com$/,
-
-            // Spotify
-            /^www\.spotify\.com$/,
-            /^spotify\.com$/,
-            /^accounts\.spotify\.com$/,
-            /^api\.spotify\.com$/,
-            /^login\.spotify\.com$/,
-            /^login\.app\.spotify\.com$/,
-            /^open\.spotify\.com$/,
-            /(?:^|\.)spotifycdn\.com$/,
-            /(?:^|\.)scdn\.co$/,
-            /(?:^|\.)gstatic\.com$/,
-
-            // 4pda
-            /(?:^|\.)4pda\.to$/
-        ];
-
-        // Match host with proxy hosts
-        if (proxyHosts.some(regex => regex.test(host))) {
-            return "+proxy";
-        }
-
+        if (/^promoted\.soundcloud\.com$/.test(host)) return "+proxy";
+        if (/^dwt\.soundcloud\.com$/.test(host)) return "+proxy";
+        if (/^api.*\.soundcloud\.com$/.test(host)) return "+proxy";
+        if (/^soundcloud\.com$/.test(host)) return "+proxy";
+        if (/chatgpt\.com$/.test(host)) return "+proxy";
+        if (/openai\.com$/.test(host)) return "+proxy";
+        if (/oaistatic\.com$/.test(host)) return "+proxy";
+        if (/oaiusercontent\.com$/.test(host)) return "+proxy";
+        if (/auth0\.com$/.test(host)) return "+proxy";
+        if (/^accounts\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^api\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^open\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^www\.spotify\.com$/.test(host)) return "+proxy";
+        if (/^spotify\.com$/.test(host)) return "+proxy";
+        if (/spotifycdn\.com$/.test(host)) return "+proxy";
+        if (/scdn\.co$/.test(host)) return "+proxy";
         return "DIRECT";
     },
-    "+proxy": function(url, host, scheme) {
+    "+proxy": function (url, host, scheme) {
         "use strict";
         return "SOCKS5 127.0.0.1:9050; SOCKS 127.0.0.1:9050";
     }
