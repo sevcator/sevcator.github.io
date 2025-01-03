@@ -9,27 +9,36 @@ var FindProxyForURL = function(init, profiles) {
         return result;
     };
 }("+Switch", {
-    "+Switch": function(url, host) {
+    "+Switch": function(url, host, scheme) {
         "use strict";
-        if (/^(promoted|dwt|api|soundcloud)\.com$/.test(host) ||
-            /^(chatgpt|openai|oaistatic|oaiusercontent|auth0)\.com$/.test(host) ||
-            /^(www\.)?(intel|accounts\.spotify|api\.spotify|open\.spotify|www\.spotify|spotify)\.com$/.test(host) ||
-            /^(spotifycdn|scdn)\.co$/.test(host) ||
-            /^www\.tiktok\.com$/.test(host)) {
-            return "+Tor";
-        }
-        if (/^(yandex|dzen)\.ru$/.test(host) ||
-            /(?:^|\.)doubleclick\.net$/.test(host) ||
-            /(?:^|\.)2mdn\.net$/.test(host)) {
-            return "+Adblock";
-        }
+        if (/^promoted\.soundcloud\.com$/.test(host)) return "+Tor";
+        if (/^dwt\.soundcloud\.com$/.test(host)) return "+Tor";
+        if (/^api.*\.soundcloud\.com$/.test(host)) return "+Tor";
+        if (/^soundcloud\.com$/.test(host)) return "+Tor";
+        if (/chatgpt\.com$/.test(host)) return "+Tor";
+        if (/openai\.com$/.test(host)) return "+Tor";
+        if (/oaistatic\.com$/.test(host)) return "+Tor";
+        if (/oaiusercontent\.com$/.test(host)) return "+Tor";
+        if (/auth0\.com$/.test(host)) return "+Tor";
+        if (/^www\.intel\.com$/.test(host)) return "+Tor";
+        if (/^accounts\.spotify\.com$/.test(host)) return "+Tor";
+        if (/^api\.spotify\.com$/.test(host)) return "+Tor";
+        if (/^open\.spotify\.com$/.test(host)) return "+Tor";
+        if (/^www\.spotify\.com$/.test(host)) return "+Tor";
+        if (/^spotify\.com$/.test(host)) return "+Tor";
+        if (/spotifycdn\.com$/.test(host)) return "+Tor";
+        if (/scdn\.co$/.test(host)) return "+Tor";
+        if (/yandex\.ru$/.test(host)) return "+Adblock";
+        if (/dzen\.ru$/.test(host)) return "+Adblock";
+        if (/(?:^|\.)doubleclick\.net$/.test(host)) return "+Adblock";
+        if (/(?:^|\.)2mdn\.net$/.test(host)) return "+Adblock";
         return "DIRECT";
     },
-    "+Tor": function() {
+    "+Tor": function(url, host, scheme) {
         "use strict";
         return "SOCKS5 127.0.0.1:9050; SOCKS 127.0.0.1:9050";
     },
-    "+Adblock": function() {
+    "+Adblock": function(url, host, scheme) {
         "use strict";
         return "PROXY 127.0.0.1:53";
     }
