@@ -11,9 +11,9 @@ var FindProxyForURL = function(init, profiles) {
 }("+Switch", {
     "+Switch": function(url, host) {
         "use strict";
-        if (/^(promoted|dwt|api.*)\.soundcloud\.com$/.test(host) ||
+        if (/^(promoted|dwt|api|soundcloud)\.com$/.test(host) ||
             /^(chatgpt|openai|oaistatic|oaiusercontent|auth0)\.com$/.test(host) ||
-            /^(www\.)?(tiktok|intel|accounts\.spotify|api\.spotify|open\.spotify|www\.spotify|spotify)\.com$/.test(host) ||
+            /^(www\.)?(intel|accounts\.spotify|api\.spotify|open\.spotify|www\.spotify|spotify)\.com$/.test(host) ||
             /^(spotifycdn|scdn)\.co$/.test(host)) {
             return "+Tor";
         }
