@@ -29,6 +29,9 @@ var FindProxyForURL = function(init, profiles) {
         if (/spotifycdn\.com$/.test(host)) return "+Tor";
         if (/scdn\.co$/.test(host)) return "+Tor";
         if (/^4pda\.to$/.test(host)) return "+Tor";
+        if (/tiktok\.com$/.test(host)) return "+Tor";
+        if (/tiktokcdn\.com$/.test(host)) return "+Tor";
+        if (/tiktokcdn-us\.com$/.test(host)) return "+Tor";
         if (/yandex\.ru$/.test(host)) return "+Adblock";
         if (/dzen\.ru$/.test(host)) return "+Adblock";
         if (/(?:^|\.)doubleclick\.net$/.test(host)) return "+Adblock";
