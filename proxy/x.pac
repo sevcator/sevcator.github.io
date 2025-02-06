@@ -11,27 +11,35 @@ var FindProxyForURL = function(init, profiles) {
 }("+Switch", {
     "+Switch": function(url, host, scheme) {
         "use strict";
-        if (/^promoted\.soundcloud\.com$/.test(host)) return "+Tor";
-        if (/^dwt\.soundcloud\.com$/.test(host)) return "+Tor";
-        if (/^api.*\.soundcloud\.com$/.test(host)) return "+Tor";
-        if (/chatgpt\.com$/.test(host)) return "+Tor";
-        if (/openai\.com$/.test(host)) return "+Tor";
-        if (/oaistatic\.com$/.test(host)) return "+Tor";
-        if (/oaiusercontent\.com$/.test(host)) return "+Tor";
-        if (/auth0\.com$/.test(host)) return "+Tor";
-        if (/^www\.intel\.com$/.test(host)) return "+Tor";
-        if (/^accounts\.spotify\.com$/.test(host)) return "+Tor";
-        if (/^api\.spotify\.com$/.test(host)) return "+Tor";
-        if (/^open\.spotify\.com$/.test(host)) return "+Tor";
-        if (/^www\.spotify\.com$/.test(host)) return "+Tor";
-        if (/^spotify\.com$/.test(host)) return "+Tor";
-        if (/spotifycdn\.com$/.test(host)) return "+Tor";
-        if (/scdn\.co$/.test(host)) return "+Tor";
+        if (/(?:^|\.)soundcloud\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)chatgpt\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)openai\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)oaistatic\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)oaiusercontent\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)auth0\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)spotify\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)spotifycdn\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)scdn\.co$/.test(host)) return "+Tor";
         if (/^4pda\.to$/.test(host)) return "+Tor";
+        if (/(?:^|\.)gemini\.google\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)aistudio\.google\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)generativelanguage\.googleapis\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)alkalimakersuite-pa\.clients6\.google\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)copilot\.microsoft\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)sydney\.bing\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)edgeservices\.bing\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)claude\.ai$/.test(host)) return "+Tor";
+        if (/(?:^|\.)aitestkitchen\.withgoogle\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)aisandbox-pa\.googleapis\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)o\.pki\.goog$/.test(host)) return "+Tor";
+        if (/(?:^|\.)labs\.google$/.test(host)) return "+Tor";
+        if (/(?:^|\.)notebooklm\.google$/.test(host)) return "+Tor";
+        if (/(?:^|\.)notebooklm\.google\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)webchannel-alkalimakersuite-pa\.clients6\.google\.com$/.test(host)) return "+Tor";
+        if (/(?:^|\.)yandex\.ru$/.test(host)) return "+Adblock";
+        if (/(?:^|\.)dzen\.ru$/.test(host)) return "+Adblock";
         if (/yandex\.ru$/.test(host)) return "+Adblock";
         if (/dzen\.ru$/.test(host)) return "+Adblock";
-        if (/(?:^|\.)doubleclick\.net$/.test(host)) return "+Adblock";
-        if (/(?:^|\.)2mdn\.net$/.test(host)) return "+Adblock";
         return "DIRECT";
     },
     "+Tor": function(url, host, scheme) {
